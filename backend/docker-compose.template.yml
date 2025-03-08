@@ -1,0 +1,38 @@
+services:
+# change "user". for Ex: tuananhtd
+  backend:
+    container_name: user_automl_backend
+    depends_on:
+      - mongodb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    
+  mongodb:
+    image: mongo:latest
+    container_name: user_mongodb
+    restart: always
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: admin
+      MONGODB_INITDB_DATABASE: automl
+    ports:
+      - PORT_DB:27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - "./mongodb/data:/data/db"
+    networks:
+      - user_automl_be
+
+  redis:
+    image: redis:latest
+    container_name: user_redis
+    ports:
+      - PORT_REDIS:6379
+    command: redis-server
+    networks:
+      - user_automl_be
+
+networks:
+  user_automl_be:

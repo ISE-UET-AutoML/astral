@@ -1,0 +1,7 @@
+node_modules
+build
+.git*
+Dockerfile
+.dockerignore
+yarn-error.log
+.eslintrc.json

@@ -1,0 +1,8 @@
+autogluon==1.1.0
+bentoml
+lime==0.2.0.1
+shap==0.46.0
+opencv-python
+contractions
+onnx
+onnxruntime

@@ -1,0 +1,7 @@
+**/__pycache__/**
+.env
+__pycache__
+temp
+
+version_.py
+environment.ini

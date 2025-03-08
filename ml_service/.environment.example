@@ -1,0 +1,52 @@
+[project]
+name = ML service
+ml_api_port = PORT_MLS
+ml_api_host = 0.0.0.0
+
+; if run on docker, rename the host to the container name
+[redis]
+host = localhost
+port = PORT_REDIS
+pass = password
+db = 0
+
+
+[rabbitmq]
+host = localhost
+post = PORT_RABBITMQ
+user = guest
+pass = guest
+vhost = 
+
+
+[celery]
+query = ml_celery
+queue = ml_celery
+
+[gcloud]
+GCP_CREDENTIALS=./service-account.json
+
+[tensorboard]
+port=PORT_TENSORBOARD
+
+[backend]
+host=http://localhost:PORT_BE
+ACCESS_TOKEN_SECRET=insert_a_random_string_here
+REFRESH_TOKEN_SECRET=insert_a_random_string_here
+
+[data_service]
+host=http://localhost:PORT_DTS
+
+
+[vastai]
+API_KEY=insert_vastai_api_key_here
+
+[aws]
+BUCKET_NAME=
+BUCKET_REGION=us-east-1
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+
+[resource_service]
+HOST=http://localhost:PORT_RES
+REALTIME_INFERENCE_PORT=8680

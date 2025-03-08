@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+vastai==0.2.6

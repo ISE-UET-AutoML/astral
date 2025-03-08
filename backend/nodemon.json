@@ -1,0 +1,12 @@
+{
+    "ignore": [
+        "dist/*",
+        "node_modules/*",
+        ".git/*",
+        ".vscode/*",
+        "mongodb/*",
+        "mongoconfig/*",
+        ".circleci/*"
+
+    ]
+}

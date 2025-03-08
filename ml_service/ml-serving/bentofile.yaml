@@ -1,0 +1,10 @@
+service: "service:ImageClassifyService"
+labels:
+  owner: ISE
+  project: automl
+include:
+  - "*.py"
+python:
+  packages:
+    - lime
+    - transformers

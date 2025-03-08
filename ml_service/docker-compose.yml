@@ -1,0 +1,41 @@
+services:
+  # change "user" . for Ex: tuananhtd
+  # Redis
+  redis:
+    image: redis
+    container_name: tuananhtd_redis
+    restart: unless-stopped
+    command: redis-server --requirepass password
+    volumes:
+      - redis-data:/data
+      - ./redis-logs:/logs/
+    ports:
+      - 10051:6379
+    networks:
+      - tuananhtd_automl
+
+  # Rabbitmq
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: tuananhtd_rabbitmq
+    ports:
+      - 10052:5672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/
+      - rabbitmq-logs:/var/log/rabbitmq
+    networks:
+      - tuananhtd_automl
+
+networks:
+  tuananhtd_automl:
+
+volumes:
+  redis-data:
+  rabbitmq-data:
+  rabbitmq-logs:
+  mydata:
+    # celery-logs:
+    # api-logs:

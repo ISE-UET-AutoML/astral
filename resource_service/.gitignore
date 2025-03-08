@@ -1,0 +1,70 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Môi trường ảo
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+environment.ini
+
+# Tệp môi trường
+.env
+
+# Các tệp nhật ký
+*.log
+
+gpu_names_cache.json
+
+# Các thư mục phân phối / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Bộ nhớ cache của Jupyter Notebook
+.ipynb_checkpoints
+
+# Tệp hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Tệp tạm thời của trình soạn thảo
+.vscode/
+*.swp
+*.swo
+
+# Tệp hệ thống
+*.sqlite3
+*.db
+
+# Tệp có thông tin nhạy cảm
+*.secret
+*.key
+run.sh
+
+app/terraforms/aws/terraform.tfvars
+app/terraforms/gcp/terraform.tfvars
+
+
+app/terraforms/gcp/terraform.tfstate
+app/terraforms/aws/terraform.tfstate
+app/terraforms/aws/terraform.tfstate
+
+app/terraforms/aws/.terraform/
+app/terraforms/gcp/.terraform/
+
+app/terraforms/aws/.terraform.lock.hcl
+app/terraforms/gcp/.terraform.lock.hcl
+
+app/terraforms/aws/terraform.tfstate
+app/terraforms/gcp/terraform.tfstate
+
+app/terraforms/aws/terraform.tfstate.backup
+app/terraforms/gcp/terraform.tfstate.backup
+

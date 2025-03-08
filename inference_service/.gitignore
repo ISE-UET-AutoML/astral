@@ -1,0 +1,18 @@
+
+tmp
+venv
+# envs
+models
+
+.env
+__pycache__/
+
+sample_data
+
+abc123/
+abc456/
+abc789/
+
+.abc123/
+.abc456/
+.abc789/

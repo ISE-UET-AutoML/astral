@@ -1,0 +1,13 @@
+__pycache__/
+
+workspace/
+
+*.json
+
+*.html
+
+.env
+*.csv
+*.ipynb
+
+enviroment.ini
