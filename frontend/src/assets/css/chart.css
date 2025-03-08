@@ -1,0 +1,9 @@
+.charts-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.charts-container > h3 {
+    margin-left: auto;
+    margin-right: auto;
+  }

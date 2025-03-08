@@ -1,0 +1,63 @@
+.label-editor-container {
+    max-height: calc(100vh - (100px + 100px)) !important;
+    overflow-x: hidden;
+    /* overflow-y: scroll; */
+}
+
+.lsf-object>div {
+    max-height: 375px !important;
+}
+
+.lsf-object>div.lsf-toolbar {
+    max-height: 200px !important;
+    overflow: hidden;
+}
+
+h3.label-text {
+    font-weight: bold !important;
+}
+
+h4.label-text {
+    font-weight: bold !important;
+    margin-bottom: 0px;
+}
+
+button.add-label {
+    border: 1px solid;
+    padding: 4px;
+    width: 50px;
+}
+
+button.add-label::hover {
+    background-color: azure;
+}
+
+textarea {
+    height: 300px;
+    width: 500px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box !important;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.align-top {
+    top: 0px;
+    height: 500px;
+    width: 500px;
+    position: relative;
+}
+
+li.label-li {
+    background-color: antiquewhite;
+    margin: 2px;
+    align-content: center;
+}
+
+
+li.label-li>button {
+    float: right;
+    margin: 4px;
+}

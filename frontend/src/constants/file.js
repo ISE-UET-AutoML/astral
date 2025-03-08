@@ -1,0 +1,13 @@
+const ALLOWED_FILE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp','csv','json'];
+
+const UploadTypes = Object.freeze({
+	MULTIPLE: 0,
+	FOLDER: 1,
+	IMAGE_LABEL_FOLDER: 'IMAGE_LABEL_FOLDER',
+	JSON_COCO_FORMAT: 'JSON_COCO_FORMAT',
+	CSV_SINGLE: 'CSV_SINGLE',
+	CSV_MULTIMODAL: 'CSV_MULTIMODAL',
+	CSV_TIMESERIES: 'CSV_TIMESERIES',
+});
+
+export { UploadTypes, ALLOWED_FILE_EXTENSIONS };

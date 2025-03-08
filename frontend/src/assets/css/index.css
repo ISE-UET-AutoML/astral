@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes ping {
+	30%,
+	100% {
+		transform: scale(1.02);
+		opacity: 0.6;
+	}
+}
+
+.spinner {
+	width: 56px;
+	height: 56px;
+	display: grid;
+	border: 4.5px solid #0000;
+	border-radius: 50%;
+	border-color: #dbdcef #0000;
+	animation: spinner-animation 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+	content: '';
+	grid-area: 1/1;
+	margin: 2.2px;
+	border: inherit;
+	border-radius: 50%;
+}
+
+.spinner::before {
+	border-color: #474bff #0000;
+	animation: inherit;
+	animation-duration: 0.5s;
+	animation-direction: reverse;
+}
+
+.spinner::after {
+	margin: 8.9px;
+}
+
+@keyframes spinner-animation {
+	100% {
+		transform: rotate(1turn);
+	}
+}
+
+html,
+body,
+#root,
+.App {
+	height: 100%;
+}
+
+body {
+	height: 100vh;
+	/* background-color: #edf3fe; */
+}
+
+.container {
+	display: flex;
+	height: 100vh;
+}
+
+.menu {
+	width: 200px;
+	background-color: #f0f0f0;
+	padding: 20px;
+}
+
+.menu h2 {
+	margin-top: 0;
+}
+
+.menu ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.menu li {
+	cursor: pointer;
+	padding: 10px;
+}
+
+.menu li:hover {
+	background-color: #e0e0e0;
+}
+
+.content {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+@keyframes drawUnderline {
+	0% {
+		transform: scaleX(0);
+	}
+
+	100% {
+		transform: scaleX(1);
+	}
+}
+
+.underline-draw {
+	position: relative;
+	display: inline-block;
+}
+
+.underline-draw::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -15px;
+	/* Khoảng cách giữa chữ và underline */
+	height: 10px;
+	/* Độ dày của underline */
+	background-color: #3b82f6;
+	/* Màu của underline (blue-400) */
+	width: 100%;
+	transform: scaleX(0);
+	/* Bắt đầu từ 0 */
+	transform-origin: bottom left;
+	/* Vị trí bắt đầu vẽ */
+	animation: drawUnderline 1s forwards;
+}
+
+/* From Uiverse.io by AlimurtuzaCodes */
+.btn {
+	border: none;
+	width: 15em;
+	height: 3em;
+	border-radius: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	background: #3b82f6;
+	cursor: pointer;
+	transition: all 450ms ease-in-out;
+}
+
+.sparkle {
+	fill: #ffffff;
+	transition: all 800ms ease;
+}
+
+.text {
+	font-weight: 600;
+	color: #ffffff;
+	font-size: medium;
+}
+
+/* .btn:hover {
+	background: linear-gradient(0deg, #A47CF3, #683FEA);
+	box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+		inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+		0px 0px 180px 0px #9917FF;
+	transform: translateY(-2px);
+} */
+
+.btn:hover {
+	background: linear-gradient(0deg, #a47cf3, #683fea);
+	box-shadow:
+		inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+		inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+		0px 0px 0px 4px rgba(255, 255, 255, 0.2);
+	transform: translateY(-2px);
+	transition: all 0.3s ease;
+}
+
+.btn:hover .text {
+	color: white;
+}
+
+.btn:hover .sparkle {
+	fill: white;
+	transform: scale(1.2);
+}
+
+/* From Uiverse.io by vikiWayne */
+.buttonFalse {
+	padding: 1em 2em;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: #e63946;
+	transition: all 1000ms;
+	font-size: 15px;
+	position: relative;
+	overflow: hidden;
+	outline: 2px solid #e63946;
+}
+
+.buttonFalse:hover {
+	color: #ffffff;
+	transform: scale(1.1);
+	outline: 2px solid #b41d46;
+	box-shadow: 4px 5px 17px -4px #b41d46;
+}
+
+.buttonFalse::before {
+	content: '';
+	position: absolute;
+	left: -50px;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background-color: #e63946;
+	transform: skewX(45deg);
+	z-index: -1;
+	transition: width 1000ms;
+}
+
+.buttonFalse:hover::before {
+	width: 250%;
+}
+
+/* From Uiverse.io by vikiWayne */
+.buttonTrue {
+	padding: 1em 2em;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: #50c878;
+	transition: all 1000ms;
+	font-size: 15px;
+	position: relative;
+	overflow: hidden;
+	outline: 2px solid #50c878;
+}
+
+.buttonTrue:hover {
+	color: #ffffff;
+	transform: scale(1.1);
+	outline: 2px solid #2ca75b;
+	box-shadow: 4px 5px 17px -4px #3ebb6a;
+}
+
+.buttonTrue::before {
+	content: '';
+	position: absolute;
+	left: -50px;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background-color: #50c878;
+	transform: skewX(45deg);
+	z-index: -1;
+	transition: width 1000ms;
+}
+
+.buttonTrue:hover::before {
+	width: 250%;
+}
+
+.glassMorphism {
+	background: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(17px);
+	-webkit-backdrop-filter: blur(17px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Tooltip container */
+.tooltip {
+	position: relative;
+	display: inline-block;
+	/* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: #a9a9a9;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	top: -30px;
+	right: 105%;
+
+	/* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+.glow {
+	box-shadow: 0px 0px 243px 20px rgba(59, 131, 246, 0.45);
+}
+
+.overlay {
+	display: block;
+	position: fixed;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+	background-color: #fefefe;
+	margin: 50px auto;
+	padding: 20px;
+}
+
+.markdown > * {
+	all: revert;
+}
+.markdown .text {
+	all: revert;
+}
+.markdown li ul {
+	list-style-type: disc;
+	padding-left: 20px;
+}
+
+.katex-display {
+    display: block !important;
+    max-width: 100% !important;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
