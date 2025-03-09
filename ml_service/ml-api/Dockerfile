@@ -20,10 +20,9 @@ RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 COPY ./requirements.txt ./requirements.txt 
-COPY ./environment.ini ./environment.ini 
 RUN pip install -r requirements.txt
 
 # copy project
-COPY ./ml-api/app/ /ml-api/app/
+COPY ./ml-api/app/ /app/
 
 EXPOSE 9090

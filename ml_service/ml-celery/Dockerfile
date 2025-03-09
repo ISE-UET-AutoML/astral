@@ -5,8 +5,6 @@
 # pull official base image
 FROM python:3.10.14
 
-# maintainer
-LABEL maintainer="Vu Minh <vuvanminh.bacninh@gmail.com>"
 
 # set work directory
 WORKDIR /
@@ -20,11 +18,11 @@ RUN pip install --upgrade pip
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
 
-COPY ./requirements.txt ./requirements.txt 
-COPY ./environment.ini ./environment.ini 
+COPY ./requirements.txt ./requirements.txt
 COPY ./service-account.json ./service-account.json 
+
 RUN pip install -r requirements.txt
 
 
 # copy project
-COPY ./ml-celery/app/ /ml-celery/app/
+COPY ./ml-celery/app/ /app/

@@ -195,3 +195,4 @@ instance_ssh_keys
 gpu_names_cache.json
 environment.ini
 scripts
+redis-data
