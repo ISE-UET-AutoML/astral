@@ -26,7 +26,7 @@ u = u.replace(tzinfo=pytz.timezone("Asia/Ho_Chi_Minh"))
 # =========================================================================
 #                          PROJECT INFORMATION
 # =========================================================================
-PROJECT = cfg["project"]
+PROJECT = cfg["ml_service"]
 
 # =========================================================================
 #                          REDIS INFORMATION
@@ -67,7 +67,7 @@ REFRESH_TOKEN = BACKEND["REFRESH_TOKEN_SECRET"]
 #                           DATASERVICE INFORMATION
 # =========================================================================
 DATASERVICE = cfg["data_service"]
-DATASERVICE_HOST = DATASERVICE["host"]
+DATASERVICE_HOST = DATASERVICE["url"]
 
 # =========================================================================
 #                          VASTAI INFORMATION
@@ -88,5 +88,5 @@ BUCKET_REGION = cfg["aws"]["BUCKET_REGION"]
 #                          RESOURCE_SERVICE INFORMATION
 # =========================================================================
 
-CLOUD_INSTANCE_SERVICE_URL = cfg["resource_service"]["HOST"]
+CLOUD_INSTANCE_SERVICE_URL = cfg["resource_service"]["url"]
 REALTIME_INFERENCE_PORT = cfg["resource_service"]["REALTIME_INFERENCE_PORT"]

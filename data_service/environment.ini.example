@@ -1,0 +1,16 @@
+[project]
+name = data service
+port = PORT_DTS
+host = 0.0.0.0
+
+[ml_service]
+host=http://localhost:PORT_MLS
+
+[backend]
+host=http://localhost:5000
+ACCESS_TOKEN_SECRET=insert_access_token_secret
+REFRESH_TOKEN_SECRET=insert_refresh_token_secret
+
+[label_studio]
+host=http://localhost:PORT_LBS
+api_key=insert_your_lbs_api_key

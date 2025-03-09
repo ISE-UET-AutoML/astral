@@ -1,0 +1,167 @@
+services:
+  # FRONTEND CONTAINERS
+  frontend:
+    container_name: astral_frontend
+    depends_on:
+      - backend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    restart: always
+    networks:
+      - astral
+
+  # BACKEND CONTAINERS
+  backend:
+    container_name: astral_backend
+    depends_on:
+      - mongodb
+      - be-redis
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+    restart: always
+    networks:
+      - astral
+
+  mongodb:
+    image: mongo:latest
+    container_name: astral_be_mongodb
+    restart: always
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: admin
+      MONGODB_INITDB_DATABASE: astral
+    ports:
+      - 18674:27017
+    volumes:
+      - ./backend/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./backend/mongodb/data:/data/db
+    networks:
+      - astral
+
+  be-redis:
+    image: redis:latest
+    container_name: astral_be_redis
+    ports:
+      - 16379:6379
+    command: redis-server
+    networks:
+      - astral
+
+  
+  # # ML_SERVICE CONTAINERS
+
+  # ml-redis:
+  #   image: redis
+  #   container_name: astral_ml_redis
+  #   restart: unless-stopped
+  #   command: redis-server --requirepass password
+  #   volumes:
+  #     - ./ml_service/redis-data:/data
+  #     - ./ml_service/redis-logs:/logs/
+  #   ports:
+  #     - 10051:6379
+  #   networks:
+  #     - astral
+
+  
+  # rabbitmq:
+  #   image: rabbitmq:3-management-alpine
+  #   container_name: astral_ml_rabbitmq
+  #   ports:
+  #     - 10052:5672
+  #   environment:
+  #     - RABBITMQ_DEFAULT_USER=guest
+  #     - RABBITMQ_DEFAULT_PASS=guest
+  #   volumes:
+  #     - rabbitmq-data:/var/lib/rabbitmq/
+  #     - rabbitmq-logs:/var/log/rabbitmq
+  #   networks:
+  #     - astral
+
+  # # API server
+  # ml-api:
+  #   build:
+  #     context: ./ml_service/ml-api
+  #     dockerfile: Dockerfile
+  #   container_name: ml-api
+  #   restart: unless-stopped
+  #   command: sh -c "python ml-api/app/main.py"
+  #   volumes:
+  #     - ./ml_service/ml-api/app:/ml-api/app/
+  #     - ./ml_service/api-logs:/logs/
+  #   ports:
+  #     - 10410:10410
+  #   depends_on:
+  #     - rabbitmq
+  #     - redis
+  #   networks:
+  #     - astral
+
+  # ml-celery:
+  #   build:
+  #     context: ./ml_service/ml-celery
+  #     dockerfile: Dockerfile
+  #   container_name: ml-celery
+  #   restart: unless-stopped
+  #   command: sh -c "celery -A ml-celery.app.celery worker --loglevel=info --concurrency=1 -P threads -E --logfile=/logs/celery.log"
+  #   volumes:
+  #     - ./ml_service/ml-celery/app:/ml-celery/app/
+  #     - ./ml_service/celery-logs/:/logs/
+  #     - ./ml_service/tmp/:/tmp/
+  #   depends_on:
+  #     - rabbitmq
+  #     - redis
+  #   networks:
+  #     - astral
+
+  # # RESOURCE_SERVICE CONTAINERS
+
+  # resource-api:
+  #   build:
+  #     context: ./resource_service
+  #     dockerfile: Dockerfile
+  #   container_name: resource-api
+  #   restart: unless-stopped
+  #   command: sh -c "python app/main.py"
+  #   volumes:
+  #     - ./resource_service/app:/app/
+  #     - ./resource_service/api-logs:/logs/
+  #   ports:
+  #     - 10411:10411
+  #   networks:
+  #     - astral
+
+  # # MONITORING CONTAINERS
+  # monitoring-api:
+  #   build:
+  #     context: ./monitoring_service
+  #     dockerfile: Dockerfile
+  #   container_name: monitoring-api
+  #   restart: unless-stopped
+  #   command: sh -c "python app/main.py"
+  #   volumes:
+  #     - ./monitoring_service/app:/app/
+  #     - ./monitoring_service/api-logs:/logs/
+  #   ports:
+  #     - 10412:10412
+  #   networks:
+  #     - astral
+
+networks:
+  astral:
+    driver: bridge
+
+volumes:
+  redis-data:
+  rabbitmq-data:
+  rabbitmq-logs:

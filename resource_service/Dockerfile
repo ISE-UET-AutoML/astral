@@ -24,6 +24,6 @@ COPY ./environment.ini ./environment.ini
 RUN pip install -r requirements.txt
 
 # copy project
-COPY ./ml-api/app/ /ml-api/app/
+COPY ./app/ /app/
 
 EXPOSE 9090

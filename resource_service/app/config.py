@@ -8,4 +8,7 @@ config = configparser.ConfigParser()
 config.read("environment.ini")
 
 # Lưu trữ các biến môi trường
-API_KEY = config["vastai"]["api_key"]
+API_KEY = config["vastai"]["API_KEY"]
+# Lưu trữ các biến môi trường
+HOST = config["resource_service"]["host"]
+PORT = config["resource_service"]["port"]

@@ -27,7 +27,7 @@ TEMP_DIR = "./tmp"
 # =========================================================================
 #                           PROJECT INFORMATION
 # =========================================================================
-PROJECT = cfg["project"]
+PROJECT = cfg["data_service"]
 PROJECT_NAME = PROJECT["name"]
 HOST = PROJECT["host"]
 PORT = PROJECT["port"]
@@ -44,7 +44,7 @@ BACKEND_REFRESH_TOKEN = BACKEND["REFRESH_TOKEN_SECRET"]
 #                          ML SERVICE INFORMATION
 # =========================================================================
 ML_SERVICE = cfg["ml_service"]
-ML_SERVICE_HOST = ML_SERVICE["host"]
+ML_SERVICE_HOST = ML_SERVICE["url"]
 
 # =========================================================================
 #                          LABEL STUDIO INFORMATION

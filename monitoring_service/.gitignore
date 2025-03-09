@@ -10,4 +10,4 @@ workspace/
 *.csv
 *.ipynb
 
-enviroment.ini
+environment.ini

@@ -1,17 +1,20 @@
-FROM node:16-alpine as builder
+# Use Node.js base image
+FROM node:20-alpine as builder
 
-ARG REACT_APP_API_URL
-ARG REACT_APP_ML_SERVICE_ADDR
-
-RUN mkdir /app
-
-COPY ./package.json /app
-COPY ./yarn.lock /app
-
+# Set working directory
 WORKDIR /app
 
-RUN yarn
+# Copy package files before installing dependencies (better caching)
+COPY package.json yarn.lock ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy the rest of the application files
 COPY . .
 
-CMD yarn start
+# Expose port
 EXPOSE 3000
+
+# Start the frontend
+CMD ["yarn", "start", "--host", "0.0.0.0"]

@@ -42,7 +42,7 @@ const storageBucketName = process.env.GCP_BUCKET_NAME;
 const storageBucketURL = `gs://${process.env.GCP_BUCKET_NAME}`;
 
 /*-------------------------------------PORT---------------------------------------------------------*/
-const port = process.env.PORT;
+const port = process.env.BE_PORT;
 const databaseURL = process.env.DATABASE_URL;
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;

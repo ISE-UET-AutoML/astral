@@ -1,0 +1,86 @@
+# GENERAL ENVS FOR ALL SERVICES
+[backend]
+host=http://localhost:PORT_BE
+ACCESS_TOKEN_SECRET=copy_from_env_file
+REFRESH_TOKEN_SECRET=copy_from_env_file
+
+[vastai]
+API_KEY=
+
+[aws]
+BUCKET_NAME=
+BUCKET_REGION=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+
+[gcloud]
+GCP_CREDENTIALS=./service-account.json
+
+; ENVS FOR ML_SERVICE
+
+[ml_service]
+name = ML service
+ml_api_port = PORT_MLS
+ml_api_host = 0.0.0.0
+url = http://localhost:PORT_MLS
+
+; if run on docker, rename the host to the container name
+[redis]
+host = localhost
+port = 10051
+pass = password
+db = 0
+
+
+[rabbitmq]
+host = localhost
+post = 10052
+user = guest
+pass = guest
+vhost = 
+
+
+[celery]
+query = ml_celery
+queue = ml_celery
+
+
+[tensorboard]
+port=10056
+
+
+; ENVS FOR DATA_SERVICE
+[data_service]
+name = data service
+port = PORT_DTS
+host = 0.0.0.0
+url = http://localhost:PORT_DTS
+
+[label_studio]
+host=http://localhost:PORT_LBS
+api_key=
+
+; ENVS FOR RESOURCE_SERVICE
+[resource_service]
+name = resource service
+port = PORT_RES
+host = 0.0.0.0
+url=http://localhost:PORT_RES
+REALTIME_INFERENCE_PORT=8680
+
+
+; ENVS FOR MONITORING_SERVICE
+[monitoring_service]
+name = monitoring service
+port = PORT_MON
+host = 0.0.0.0
+url = http://localhost:PORT_MON
+
+; ENVS FOR INFERENCE_SERVICE
+[inference_service]
+name = inference service
+port = PORT_INF
+host = 0.0.0.0
+url = http://localhost:PORT_INF
+
+

@@ -23,7 +23,7 @@ u = u.replace(tzinfo=pytz.timezone("Asia/Ho_Chi_Minh"))
 # =========================================================================
 #                          PROJECT INFORMATION
 # =========================================================================
-PROJECT = cfg["project"]
+PROJECT = cfg["ml_service"]
 PROJECT_NAME = PROJECT["name"]
 HOST = PROJECT["ml_api_host"]
 PORT = PROJECT["ml_api_port"]
