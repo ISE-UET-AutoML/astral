@@ -138,10 +138,58 @@ url = http://localhost:PORT_INF
 ```
     
 ## How to run
-### Docker
-```
-docker compose build && docker compose up
-```
+## **Installation ⚙️**
+
+1. Clone ALL repositories
+2. Create .env file follow .env.example (if folder has .environment.ini -> Don't create .env )
+3. Copy "docker-compose.template.yml" to "docker-compose.yml"
+4. Change PORT\_?? (in .env, environment, docker-compose file) follow regulations
+5. Change USER in docker-compose.yml file
+6. Run setup files bellow in order and in terminal:
+   - **_In ml_service_**
+     - source setup_conda.sh
+     - source setup.sh
+   - **_In data_service_**
+     - source setup_data_service.sh
+     - source setup_label_studio.sh
+   - **_In resource_service_**
+     - source setup.sh
+   - **_In backend_**
+     - npm install
+   - **_In frontend_**
+     - yarn install
+7. Open PORT_LBS (for label_studio) in tab PORTS -> Login -> copy token to STRING
+8. In data_service/environment.ini change api_key to STRING
+   > [!IMPORTANT]
+   > Make sure you have access to the Docker.
+
+## **Running 🏃‍♂️‍➡️**
+
+1.  **_ml_service_**
+    - source run_api.sh
+    - New terminal: cd ml_service
+    - docker-compose -p user_automl up -d. For Ex: docker-compose -p minhvv_automl up -d
+    - source run_celery.sh
+2.  **_data_service_** - source run_data_service.sh - New terminal: cd data_service
+    > [!IMPORTANT]
+    > In run_label_studio.sh change port 8673 -> xxxx3
+        - source run_label_studio.sh
+3.  **_resource_service_**
+    - New terminal: cd resource_service
+    - source run.sh
+4.  **_backend_**
+    - docker-compose up -d
+    - npm run dev
+    - check port xxxx5 is forwarded? If not -> add port
+5.  **_frontend_**
+    - yarn start
+
+## **Shut down 📴**
+
+    - Ctrl + C in all Terminal
+
+> [!IMPORTANT]
+> In ml_service: docker-compose -p user_automl down. For ex: docker-compose -p minhvv_automl down
 
 ### Other ways
 You can run separate services by installing necessary packages, creating respective .env or environment.ini file and then follow the README.md at each folder.
